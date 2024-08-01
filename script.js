@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("inputfield");
   const addButton = document.getElementById("addbtn");
   const todoApp = document.getElementById("todoapp");
+  const chime = document.getElementById("chime");
+  const remove = document.getElementById("delete");
 
   // Function to add a new to-do item
   const addTodo = () => {
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Add event listener for marking the item as completed
       todoText.addEventListener("click", () => {
         todoText.style.textDecoration = "line-through";
+        chime.play();
       });
 
       // Create a remove button
@@ -30,6 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // Add event listener for the remove button
       removeButton.addEventListener("click", () => {
         todoApp.removeChild(todoItem);
+        remove.play();
+        setTimeout(() => {
+            todoApp.removeChild(todoItem);
+        }, remove.duration * 2000)
       });
 
       // Append the text and remove button to the todo item
